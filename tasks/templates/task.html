@@ -1,0 +1,33 @@
+{% extends 'links.html' %}
+{% block content %}
+<h1>Task Pending</h1>
+<br>
+
+{% for param in params %}
+    {% if param.important == True %}
+        <li><a href="{% url 'td' param.id %}"><strong>{{param.title}}</strong></a></li>
+    {% else %}
+    <li><a href="{% url 'td' param.id %}">{{param.title}}</a></li>
+    {% endif %}
+    <li>{{param.user}}</li>
+    <br>
+{% endfor %}
+{% if t == 0 %}
+    <h2>Sin tareas</h2>
+{% endif %}
+
+<h1>Task Complete</h1>
+<br>
+{% if tasks == None %}
+<h2>Sin tareas completadas</h2>
+{% else %}
+{% for task in tasks %}
+    {% if param.important == True %}
+        <li><a href="{% url 'td' task.id %}"><strong>{{task.title}}</strong></a></li>
+    {% else %}
+    <li><a href="{% url 'td' task.id %}">{{task.title}}</a></li>
+    {% endif %}
+    <li>{{task.user}}</li>
+    <br>
+{% endfor %}{% endif %}
+{% endblock %}

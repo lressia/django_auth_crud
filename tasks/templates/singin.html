@@ -1,0 +1,11 @@
+{% extends 'links.html' %}
+{% block content %}
+<h1>Sing In</h1>
+{{error}}
+<br>
+<form action="" method="POST">
+    {% csrf_token %}
+    {{form}}
+    <button>Sing In</button>
+</form>
+{% endblock %}
